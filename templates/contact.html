@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="my-4">Contacto</h1>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="{{ form.first_name.auto_id }}" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="{{ form.first_name.auto_id }}" name="{{ form.first_name.html_name }}" value="{{ form.first_name.value|default:'' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.last_name.auto_id }}" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="{{ form.last_name.auto_id }}" name="{{ form.last_name.html_name }}" value="{{ form.last_name.value|default:'' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.email.auto_id }}" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="{{ form.email.auto_id }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default:'' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.inquiry_type.auto_id }}" class="form-label">Tipo de consulta</label>
+                    <select class="form-select" id="{{ form.inquiry_type.auto_id }}" name="{{ form.inquiry_type.html_name }}" required>
+                        {% for value, text in form.inquiry_type.field.choices %}
+                        <option value="{{ value }}" {% if form.inquiry_type.value == value %}selected{% endif %}>{{ text }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.message.auto_id }}" class="form-label">Consulta</label>
+                    <textarea class="form-control" id="{{ form.message.auto_id }}" name="{{ form.message.html_name }}" rows="5" required>{{ form.message.value|default:'' }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

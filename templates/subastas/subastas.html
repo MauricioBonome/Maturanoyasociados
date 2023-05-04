@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- Carrusel de Bootstrap -->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for auction in upcoming_auctions %}
+    {% for image in auction.images.all %}
+    <div class="carousel-item {% if forloop.parentloop.first and forloop.first %}active{% endif %}">
+      <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ auction.title }}" style="max-height: 400px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block bg-dark" style="opacity: 0.7;">
+        <h5>{{ auction.title }}</h5>
+        <p>{{ auction.description }}</p>
+        <p>Precio: {{ auction.price }}</p>
+        <p>Fecha: {{ auction.date }}</p>
+      </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+  </div>
+  <!-- Botones de control -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+    <!-- Tarjetas de subastas completadas -->
+<div class="container mt-5">
+  <h2>Subastas Completadas</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+    {% for auction in completed_auctions %}
+    <div class="col">
+      <div class="card h-100">
+        {% with auction.images.all|first as first_image %}
+        <img src="{{ first_image.image.url }}" class="card-img-top" alt="{{ auction.title }}" style="max-height: 200px; object-fit: cover;">
+        {% endwith %}
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ auction.title }}</h5>
+          <p class="card-text flex-grow-1">{{ auction.description }}</p>
+          <p class="card-text">Precio: {{ auction.price }}</p>
+          <p class="card-text">Fecha: {{ auction.date }}</p>
+          <!-- Mostrar miniaturas de las imágenes restantes -->
+          <div class="row row-cols-4 g-2 mt-auto">
+            {% for image in auction.images.all|slice:"1:" %}
+            <div class="col">
+              <img src="{{ image.image.url }}" class="img-thumbnail" alt="{{ auction.title }} - Imagen {{ forloop.counter }}">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p>No hay subastas completadas.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
