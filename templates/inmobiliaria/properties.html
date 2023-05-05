@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3">
+      <div class="sidebar">
+        <h3 class="sidebar-title">Secciones Inmobiliarias</h3>
+        <ul class="sidebar-nav">
+          <li><a href="?property_type=Venta">Venta</a></li>
+          <li><a href="?property_type=Alquiler">Alquiler</a></li>
+          <li><a href="?property_type=Alquiler Temporario">Alquiler Temporario</a></li>
+          <li><a href="?property_type=Tasaciones">Tasaciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Propiedades -->
+    <div class="col-md-9">
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for property in properties %}
+        <div class="col">
+          <div class="card h-100 card-custom ">
+            <!-- Carrusel de imágenes -->
+            <div id="carouselExampleControls{{ property.id }}" class="carousel slide carousel-custom" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                {% for image in property.images.all|slice:":5" %}
+                  <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                    <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ property.title }}">
+                  </div>
+                {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls{{ property.id }}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls{{ property.id }}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Detalles de la propiedad -->
+            <div class="card-body">
+              <h5 class="card-title">{{ property.title }}</h5>
+              <p class="card-text">{{ property.description }}</p>
+              <p class="card-text">Precio: {{ property.price }}</p>
+              <a href="#" class="btn btn-primary">Comprar</a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p>No hay propiedades disponibles.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

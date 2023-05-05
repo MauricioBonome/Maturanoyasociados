@@ -1,0 +1,136 @@
+.card-custom {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-custom {
+  height: 300px; /* Establece un tamaño fijo para el carrusel */
+  overflow: hidden;
+}
+
+.carousel-custom .carousel-item {
+  height: 100%;
+
+}
+
+.carousel-custom .carousel-item img {
+  max-height: 100%;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.carousel-custom .carousel-item {
+  height: 100%;
+}
+/* Sidebar */
+.sidebar {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: #212529;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  background-color: #e9ecef;
+    color: #212529;
+}
+
+/* Estilos de los iconos de redes sociales */
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  color: white;
+  font-size: 24px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estilos de los iconos de redes sociales en hover */
+.social-media a:hover {
+  color: gray;
+}
+
+/* Estilos de los iconos de redes sociales de Facebook, Twitter y LinkedIn */
+.fa-facebook-f {
+  color: #3b5998;
+}
+
+.fa-twitter {
+  color: #00aced;
+}
+
+.fa-linkedin-in {
+  color: #0077b5;
+}
+
+
+/*para el footer*/
+
+.col-md-4 {
+  background-color: #f8f9fa; /* Cambiar el color de fondo */
+  padding: 20px;
+}
+
+h5 {
+  color: #007bff; /* Cambiar el color del título */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.link {
+  color: #343a40; /* Cambiar el color de los enlaces */
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: #007bff; /* Cambiar el color al pasar el cursor sobre los enlaces */
+}
+
+.link i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none; /* Quitar las viñetas de la lista */
+}
+
+.list-unstyled li:first-child .link {
+  margin-top: 0; /* Quitar el margen superior del primer enlace */
+}
+
+.list-unstyled li:last-child .link {
+  margin-bottom: 0; /* Quitar el margen inferior del último enlace */
+}

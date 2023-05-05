@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('app.urls')),
     path('', include('contacts.urls')),
     path('', include('subastas.urls')),
-]
+    path('properties/', include('inmobiliaria.urls')),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
