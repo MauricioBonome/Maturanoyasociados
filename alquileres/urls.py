@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('contacts.urls')),
     path('', include('subastas.urls')),
     path('properties/', include('inmobiliaria.urls')),
+    path('', include('tasaciones.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

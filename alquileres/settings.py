@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'contacts',
     'subastas',
     'inmobiliaria',
+    'tasaciones',
 ]
 
 MIDDLEWARE = [
