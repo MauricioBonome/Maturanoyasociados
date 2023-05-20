@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
 <div class="container mt-5">
   <div class="row">
@@ -11,7 +12,6 @@
           <li><a href="?property_type=Venta">Venta</a></li>
           <li><a href="?property_type=Alquiler">Alquiler</a></li>
           <li><a href="?property_type=Alquiler Temporario">Alquiler Temporario</a></li>
-          <li><a href="?property_type=Tasaciones">Tasaciones</a></li>
         </ul>
       </div>
     </div>
@@ -20,13 +20,12 @@
       <div class="row row-cols-1 row-cols-md-2 g-4">
         {% for property in properties %}
         <div class="col">
-          <div class="card h-100 card-custom ">
-            <!-- Carrusel de imágenes -->
+          <div class="card h-100 card-custom">
             <div id="carouselExampleControls{{ property.id }}" class="carousel slide carousel-custom" data-bs-ride="carousel">
               <div class="carousel-inner">
                 {% for image in property.images.all|slice:":5" %}
                   <div class="carousel-item{% if forloop.first %} active{% endif %}">
-                    <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ property.title }}">
+                    <img src="{{ image.image.url }}" class="d-block mx-auto" alt="{{ property.title }}">
                   </div>
                 {% endfor %}
               </div>
@@ -39,12 +38,17 @@
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-            <!-- Detalles de la propiedad -->
             <div class="card-body">
               <h5 class="card-title">{{ property.title }}</h5>
-              <p class="card-text">{{ property.description }}</p>
+              <p class="card-text">
+                <span class="description-short">{{ property.description|truncatechars:150 }}</span>
+                {% if property.description|length > 150 %}
+                  <span class="description-full" style="display: none;">{{ property.description }}</span>
+                  <button class="btn btn-toggle-description collapsed"></button>
+                {% endif %}
+              </p>
               <p class="card-text">Precio: {{ property.price }}</p>
-              <a href="#" class="btn btn-primary">Comprar</a>
+             <a href="{% url 'contact' %}" class="btn btn-primary">Comprar</a>
             </div>
           </div>
         </div>
@@ -55,4 +59,40 @@
     </div>
   </div>
 </div>
+
+<style>
+.carousel-item img {
+  margin: 0 auto;
+  max-width: 400px; /* Ajusta el tamaño deseado */
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var btnToggleDescriptions = document.querySelectorAll('.btn-toggle-description');
+
+  btnToggleDescriptions.forEach(function(btnToggleDescription) {
+    var descriptionShort = btnToggleDescription.previousElementSibling;
+    var descriptionFull = descriptionShort.nextElementSibling;
+
+    btnToggleDescription.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      if (descriptionShort.style.display === 'none') {
+        descriptionShort.style.display = 'inline';
+        descriptionFull.style.display = 'none';
+        btnToggleDescription.classList.add('collapsed');
+        btnToggleDescription.innerText = 'Ver más';
+      } else {
+        descriptionShort.style.display = 'none';
+        descriptionFull.style.display = 'inline';
+        btnToggleDescription.classList.remove('collapsed');
+        btnToggleDescription.innerText = 'Ver menos';
+      }
+    });
+  });
+});
+</script>
+
 {% endblock %}
+

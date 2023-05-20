@@ -1,5 +1,131 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-    <h1>Bienvenido a nuestra aplicación</h1>
+
+    <h1 class="text-center mt-5">Bienvenido a Inmobiliaria Maturano & asociados</h1>
+
+    <!-- Hero Section -->
+<section>
+     <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'media/img/logo.jpg' %}" alt="Marca" class="img-fluid">
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <form method="GET" action="{% url 'search' %}" class="w-100 custom-form">
+                    <div class="mb-3">
+                        <label for="search_term" class="form-label">¿Dónde quieres vivir?</label>
+                          <input type="text" class="form-control" id="search_term" name="search_term" placeholder="¿Dónde quieres vivir?" required>
+                    </div>
+                    <fieldset class="row mb-3">
+                        <legend class="col-form-label col-md-4 pt-0">Tipo de propiedad</legend>
+                      <div class="col-md-8">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="property_type" id="property_type_sale" value="Venta" required>
+                            <label class="form-check-label" for="property_type_sale">Venta</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="property_type" id="property_type_rent" value="Alquiler" required>
+                            <label class="form-check-label" for="property_type_rent">Alquiler</label>
+                        </div>
+                    </div>
+
+                    </fieldset>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary custom-style" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+     <!-- Nueva sección -->
+  <div class="container-fluid position-relative px-0">
+    <div class="row">
+        <div class="col-md-8">
+            <img class="img-fluid w-100" src="{% static 'inmobiliaria/img/collection.jpg' %}" alt="Background">
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-5" style="margin-left: -50px;">
+                <!-- Logo -->
+
+                   <img src="{{ logo_url}}" class="card-img-top img-fluid mx-auto d-block" style="max-height: 200px; max-width: 200px;" alt="Logo">
+
+
+                <!-- Descripción -->
+                <div class="card-body">
+                    <p class="card-text">
+                        Inmuebles extraordinarios dirigidos y supervisados por Corredores Públicos matriculados,
+                        especializados en la compra y venta de propiedades premium mat 178 y 1798.
+                    </p>
+                    <!-- Botón -->
+                    <a href="{% url 'properties' %}" class="btn btn-primary">Ver propiedades</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- vendidas -->
+<section>
+    <div class="mt-5">
+        <h2 class="titulo-centrado">Últimas propiedades vendidas</h2>
+        <div class="row">
+            {% for propiedad in ultimas_propiedades_vendidas %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ propiedad.images.first.image.url }}" class="card-img-top" style="max-height: 200px; max-width: 400px;" alt="Imagen de propiedad">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ propiedad.title }}</h5>
+
+                        <span class="badge bg-success">Vendido</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="mt-5">
+        <h2 class="titulo-centrado">Últimas propiedades alquiladas</h2>
+
+        <div class="row">
+            {% for propiedad in ultimas_propiedades_alquiladas %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ propiedad.images.first.image.url }}" class="card-img-top" style="max-height: 200px; max-width: 400px;" alt="Imagen de propiedad">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ propiedad.title }}</h5>
+                        <p class="card-text">{{ propiedad.description }}</p>
+                        <span class="badge bg-primary">Alquilado</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('input[type=radio][name=property_type]').click(function() {
+        if ($(this).hasClass('alreadyChecked')) {
+            $(this).prop('checked', false);
+            $(this).removeClass('alreadyChecked');
+            $('input[type=radio][name=property_type]').removeAttr('required');
+        } else {
+            $('input[type=radio][name=property_type]').addClass('alreadyChecked');
+            $('input[type=radio][name=property_type]').attr('required', 'required');
+        }
+    });
+});
+</script>
+
 {% endblock %}

@@ -1,3 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Rubik:wght@300;700&display=swap');
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 .card-custom {
   height: 100%;
   display: flex;
@@ -133,4 +138,82 @@ h5 {
 
 .list-unstyled li:last-child .link {
   margin-bottom: 0; /* Quitar el margen inferior del último enlace */
+}
+/* Personalización del formulario */
+form.custom-form {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+form.custom-form .form-label {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+form.custom-form .form-check-label {
+    font-size: 1.1em;
+}
+
+form.custom-form button[type="submit"] {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
+/* para los botones de los formularios*/
+
+/* Cambia el color de la barra de búsqueda y el botón */
+.custom-style {
+    background-color: #d5291b;
+    color: white; /* Cambia el color del texto a blanco para mayor contraste */
+}
+
+/* Añade una sombra cuando pasas el ratón por encima */
+.custom-style:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+/*esto  es para los h2 de home*/
+
+.titulo-centrado {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/*para el boton ver mas de comprar*/
+
+.btn-toggle-description {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-toggle-description:focus,
+.btn-toggle-description:hover {
+  text-decoration: none;
+  outline: none;
+}
+
+.btn-toggle-description.collapsed::after {
+  content: 'Ver más';
+}
+
+.btn-toggle-description.expanded::after {
+  content: 'Ver menos';
+}
+
+.description-full {
+  display: none;
 }

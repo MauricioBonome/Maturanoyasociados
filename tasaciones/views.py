@@ -4,7 +4,7 @@ from django.conf import settings
 from .forms import TasacionForm
 
 
-def solicitar_tasacion(request):
+def tasacion(request):
     form = TasacionForm(request.POST or None, request.FILES or None)
 
     if request.method == 'POST':

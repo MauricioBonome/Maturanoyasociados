@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ property.title }}</h1>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Descripción</h2>
+                <p>{{ property.description }}</p>
+                <h3>{{ property.property_type }} - {{ property.price|floatformat:2 }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>Imágenes</h2>
+                <div class="row">
+                    {% for image in property.images.all %}
+                        <div class="col-md-4 col-sm-6">
+                            <img src="{{ image.image.url }}" alt="{{ property.title }} - Imagen {{ forloop.counter }}" class="img-fluid">
+                        </div>
+                    {% empty %}
+                        <div class="col-12">
+                            <p>No hay imágenes disponibles para esta propiedad.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="container my-4">
+        <div class="row">
+            <div class="col-12">
+                <a href="{% url 'home' %}" class="btn btn-secondary">Volver a la página de inicio</a>
+                <a href="{% url 'nombre_de_la_vista_de_busqueda' %}" class="btn btn-secondary">Volver a la búsqueda</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

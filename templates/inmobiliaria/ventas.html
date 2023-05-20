@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_js %}
+<script src="{% static 'js-personalizado/form_validation.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% static 'inmobiliaria/img/foto-venta.jpg' %}" class="img-fluid" alt="Imagen de venta">
+        </div>
+        <div class="col-md-6">
+            <h2 class="mb-4">Formulario de Venta</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre</label>
+                    {{ form.nombre }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                    {{ form.email }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.telefono.id_for_label }}" class="form-label">Teléfono</label>
+                    {{ form.telefono }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.localidad.id_for_label }}" class="form-label">Localidad</label>
+                    {{ form.localidad }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.provincia.id_for_label }}" class="form-label">Provincia</label>
+                    {{ form.provincia }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.comentarios.id_for_label }}" class="form-label">Comentarios</label>
+                    {{ form.comentarios }}
+                </div>
+                <div class="form-check mb-3">
+                    {{ form.aceptar_terminos }}
+                    <label class="form-check-label" for="aceptar_terminos">Al enviar se están aceptando los Términos y Condiciones de Uso y la Política de Privacidad</label>
+                </div>
+                <button class="btn btn-primary" type="submit" {% if form.errors %}disabled{% endif %}>Enviar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

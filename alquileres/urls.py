@@ -19,6 +19,8 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from inmobiliaria.views import venta, venta_success
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
@@ -26,6 +28,8 @@ urlpatterns = [
     path('', include('subastas.urls')),
     path('properties/', include('inmobiliaria.urls')),
     path('', include('tasaciones.urls')),
+    path('venta/', venta, name='venta'),
+    path('venta/success/', venta_success, name='venta_success'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

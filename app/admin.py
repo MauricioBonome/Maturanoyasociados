@@ -1,4 +1,9 @@
 from django.contrib import admin
-from .models import Logo
+from .models import Logo, SiteIcon
 
-admin.site.register(Logo)
+
+class LogoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'image',)
+    list_display_links = ('id', 'image',)
+admin.site.register(Logo, LogoAdmin)
+admin.site.register(SiteIcon)

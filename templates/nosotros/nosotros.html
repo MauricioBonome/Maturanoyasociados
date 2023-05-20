@@ -2,30 +2,28 @@
 {% load static %}
 {% block content %}
 <div class="container my-5">
-  <div class="row">
+  <div class="row align-items-center">
     <div class="col-md-6">
-      <h2>Sobre nosotros</h2>
-      <p>En Inmobiliaria Maturano, nos dedicamos a brindar servicios integrales en el mercado inmobiliario. Nuestra misión es ofrecer a nuestros clientes la mejor experiencia de compra, venta o alquiler de propiedades, y garantizar su satisfacción en todo momento.</p>
-      <p>Contamos con un equipo de profesionales altamente capacitados y comprometidos con brindar un servicio de excelencia. Desde nuestra fundación en 1995, hemos construido una reputación sólida y confiable en el mercado inmobiliario.</p>
-      <div class="text-center mt-5">
-        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Contacto</a>
-      </div>
+      <h2 style="color:#d5291b;">Sobre nosotros</h2>
+      <p style="text-align: justify; line-height: 1.6;">En Inmobiliaria Maturano, nos dedicamos a brindar servicios integrales en el mercado inmobiliario. Nuestra misión es ofrecer a nuestros clientes la mejor experiencia de compra, venta o alquiler de propiedades, y garantizar su satisfacción en todo momento.</p>
+      <p style="text-align: justify; line-height: 1.6;">Contamos con un equipo de profesionales altamente capacitados y comprometidos con brindar un servicio de excelencia. Desde nuestra fundación en 1995, hemos construido una reputación sólida y confiable en el mercado inmobiliario.</p>
+
     </div>
     <div class="col-md-6">
       <img src="{% static 'inmobiliaria/img/logo.jpg' %}" alt="Logo Inmobiliaria Maturano" class="img-fluid">
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="row align-items-center mt-5">
     <div class="col-md-6">
-      <h2>Subastas</h2>
-      <p>En Inmobiliaria Maturano también realizamos subastas de propiedades. Nuestro equipo de profesionales se encarga de la organización y el proceso de venta para garantizar una transacción segura y transparente.</p>
-      <p>Si estás interesado en participar en nuestras subastas, contáctanos y te brindaremos toda la información que necesitas para participar en nuestro próximo evento.</p>
+      <h2 style="color:#d5291b;">Subastas</h2>
+      <p style="text-align: justify; line-height: 1.6;">En Inmobiliaria Maturano también realizamos subastas de propiedades. Nuestro equipo de profesionales se encarga de la organización y el proceso de venta para garantizar una transacción segura y transparente.</p>
+      <p style="text-align: justify; line-height: 1.6;">Si estás interesado en participar en nuestras subastas, contáctanos y te brindaremos toda la información que necesitas para participar en nuestro próximo evento.</p>
       <div class="text-center mt-5">
-        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Contacto</a>
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg" style="background-color:#d5291b; border: none;">Contacto</a>
       </div>
     </div>
     <div class="col-md-6">
-      <img src="{% static 'inmobiliaria/img/logo.jpg' %}" alt="Subastas Inmobiliaria Maturano" class="img-fluid">
+      <img src="{% static 'inmobiliaria/img/subastas-online.jpg' %}" alt="Subastas Inmobiliaria Maturano" class="img-fluid">
     </div>
   </div>
 </div>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Resultados de búsqueda</h1>
+
+    <section class="container">
+        <div class="row">
+            {% for property in properties %}
+                <div class="col-md-4 col-sm-6 my-3">
+                    <div class="card">
+                        {% with property.images.all|first as cover_image %}
+                            {% if cover_image %}
+                                <img src="{{ cover_image.image.url }}" class="card-img-top" alt="{{ property.title }}">
+                            {% endif %}
+                        {% endwith %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ property.title }}</h5>
+                            <p class="card-text">{{ property.description|truncatechars:100 }}</p>
+                            <p class="card-text">{{ property.property_type }} - {{ property.price|floatformat:2 }}</p>
+                            <a href="{% url 'property_detail' property.pk %}" class="btn btn-primary">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <p>No se encontraron propiedades que coincidan con tu búsqueda.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
