@@ -35,6 +35,11 @@
                     <textarea class="form-control" id="{{ form.message.auto_id }}" name="{{ form.message.html_name }}" rows="5" required>{{ form.message.value|default:'' }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
+                <div class="mb-3">
+                    <label for="{{ form.captcha.auto_id }}" class="form-label">Captcha</label>
+                    {{ form.captcha }}
+                </div>
+
             </form>
         </div>
     </div>

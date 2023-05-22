@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('tasaciones.urls')),
     path('venta/', venta, name='venta'),
     path('venta/success/', venta_success, name='venta_success'),
+    path('captcha/', include('captcha.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
