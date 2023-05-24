@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/553b1b40-f577-4dbd-899f-23d2afaa3fd6/resourceGroups/alquiler_inmobiliariamaturano/providers/Microsoft.Web/sites/maturanoyasociados",
+    "appService.deploySubpath": "."
+}
