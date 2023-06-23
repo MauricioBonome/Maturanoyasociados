@@ -25,9 +25,13 @@ SECRET_KEY='django-insecure-ybb8h-rteuv-ohrj7bqg4u$@g(u480ic7e&!q8835((gs4r9uh'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['maturanoyasociados.azurewebsites.net']
+
+
+ALLOWED_HOSTS = []
+
+
 
 
 # Application definition
@@ -141,7 +145,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
