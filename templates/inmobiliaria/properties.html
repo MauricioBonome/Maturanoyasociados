@@ -66,33 +66,32 @@
   max-width: 400px; /* Ajusta el tamaño deseado */
 }
 </style>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var btnToggleDescriptions = document.querySelectorAll('.btn-toggle-description');
-
-  btnToggleDescriptions.forEach(function(btnToggleDescription) {
-    var descriptionShort = btnToggleDescription.previousElementSibling;
-    var descriptionFull = descriptionShort.nextElementSibling;
-
-    btnToggleDescription.addEventListener('click', function(e) {
-      e.preventDefault();
-
-      if (descriptionShort.style.display === 'none') {
-        descriptionShort.style.display = 'inline';
-        descriptionFull.style.display = 'none';
-        btnToggleDescription.classList.add('collapsed');
-        btnToggleDescription.innerText = 'Ver más';
-      } else {
-        descriptionShort.style.display = 'none';
-        descriptionFull.style.display = 'inline';
-        btnToggleDescription.classList.remove('collapsed');
-        btnToggleDescription.innerText = 'Ver menos';
-      }
+  document.addEventListener('DOMContentLoaded', function() {
+    var btnToggleDescriptions = document.querySelectorAll('.btn-toggle-description');
+  
+    btnToggleDescriptions.forEach(function(btnToggleDescription) {
+      var descriptionShort = btnToggleDescription.previousElementSibling;
+      var descriptionFull = descriptionShort.nextElementSibling;
+  
+      btnToggleDescription.addEventListener('click', function(e) {
+        e.preventDefault();
+  
+        if (descriptionShort.style.display === 'none') {
+          descriptionShort.style.display = 'inline';
+          descriptionFull.style.display = 'none';
+          btnToggleDescription.classList.add('collapsed');
+          btnToggleDescription.innerText = 'Ver más';
+        } else {
+          descriptionShort.style.display = 'none';
+          descriptionFull.style.display = 'inline';
+          btnToggleDescription.classList.remove('collapsed');
+          btnToggleDescription.innerText = 'Ver menos';
+        }
+      }, { passive: true }); // Add the passive option here
     });
   });
-});
-</script>
+  </script>
 
 {% endblock %}
 
