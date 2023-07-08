@@ -9,16 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css-personalizado/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.min.css' %}">
-
     <link rel="icon" href="{% get_site_icon %}" type="image/x-icon">
-
-
-
-
     <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.min.css' %}">
-
-
-
     <title>{% block title %}Maturano & Asociados{% endblock %}</title>
 </head>
 <body>
@@ -29,6 +21,32 @@
     {% include 'includes/footer.html' %}
     {% include 'includes/footer_map.html' %}
     {% include 'includes/social.html' %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var btnToggleDescriptions = document.querySelectorAll('.btn-toggle-description');
+
+            btnToggleDescriptions.forEach(function(btnToggleDescription) {
+                var descriptionShort = btnToggleDescription.previousElementSibling;
+                var descriptionFull = descriptionShort.nextElementSibling;
+
+                btnToggleDescription.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    if (descriptionShort.style.display === 'none') {
+                        descriptionShort.style.display = 'inline';
+                        descriptionFull.style.display = 'none';
+                        btnToggleDescription.classList.add('collapsed');
+                        btnToggleDescription.innerText = 'Ver más';
+                    } else {
+                        descriptionShort.style.display = 'none';
+                        descriptionFull.style.display = 'inline';
+                        btnToggleDescription.classList.remove('collapsed');
+                        btnToggleDescription.innerText = 'Ver menos';
+                    }
+                }, { passive: true });
+            });
+        });
+    </script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
