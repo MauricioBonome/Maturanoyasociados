@@ -15,11 +15,11 @@ class AuctionImageInline(admin.TabularInline):
 
 class AuctionAdmin(admin.ModelAdmin):
     list_display = ('title', 'price', 'date', 'is_completed')
-    list_filter = ('is_completed', 'date')
+    list_filter = ('is_completed', 'date' ) 
     search_fields = ('title', 'description')
     ordering = ('-date',)
     inlines = [AuctionImageInline]
-    fieldsets = (
+    fieldsets = ( 
         (None, {
             'fields': ('title', 'description', 'price', 'date', 'is_completed')
         }),
